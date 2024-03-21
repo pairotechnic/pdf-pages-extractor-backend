@@ -4,10 +4,13 @@ const path = require('path') // for file path manipulation
 const cors = require('cors') // for enabling Cross-Origin Resource Sharing
 const { PDFDocument } = require('pdf-lib'); // for PDF manipulation
 const fs = require('fs'); // for file system operations
+const dotenv = require('dotenv') // for using .env file
+
+dotenv.config() // loads contents of .env into process.env
+// Only required during development, because in production we directly enter the environment variables in VERCEL 
 
 
 const app = express() // Express application is created
-const port = 4000 // configured to listen on port 4000
 
 app.use(cors()) // used to allow cross-origin requests
 app.use(express.json()); // used to parse incoming JSON payloads
@@ -97,6 +100,6 @@ app.post('/api/extract-pages', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`)
+app.listen(process.env.port, () => {
+  console.log(`Server running at http://localhost:${process.env.port}`)
 })
