@@ -41,6 +41,11 @@ const upload = multer({
   }
 })
 
+// Backend testing route
+app.get('/superman', (req, res) => {
+  res.json({ msg : 'This test endpoint /superman is working'})
+})
+
 // File Upload route
 app.post('/api/upload', upload.single('pdf'), (req, res) => { // accepts a single file upload, with the field name 'pdf'
   const filePath = path.join('uploads', req.file.filename) // saves file to the 'uploads' directory
