@@ -43,7 +43,7 @@ const upload = multer({
 
 // Backend testing route
 app.get('/superman', (req, res) => {
-  res.json({ msg : 'This test endpoint /superman is working'})
+  res.json({ msg : 'This test endpoint /superman is workin'})
 })
 
 // File Upload route
